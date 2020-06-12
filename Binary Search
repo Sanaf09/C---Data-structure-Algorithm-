@@ -1,0 +1,67 @@
+#include<stdio.h>
+
+
+int binary_search(int a[50],int high,int low,int key) 	//Declaration of binary search function
+{
+	if(low<=high)
+	{
+	int mid=(low+high)/2;		//Calculating middle element
+	if(key==a[mid])
+	{
+	 return mid;
+    }
+	 else if(key<a[mid])
+	 {
+	  return binary_search(a,mid-1,low,key);
+     }
+	  else if(key>a[mid])
+	  {
+	  return binary_search(a,high,mid+1,key);
+      }
+     }
+	else
+	{
+	return -1;
+    }
+}
+
+int main()			//Declaration of main function
+{
+	int a[50],high,low,key,n,i;
+	low=0;
+	printf("Enter the number of elements:");
+	scanf("%d",&n);
+	high=n-1;
+	printf("Enter the sorted array:");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);			//taking Input from the user
+	}
+	printf("Enter the key element:");
+	scanf("%d",&key);
+	int index = binary_search(a,high,low,key);		//Calling binary search function
+	if(index==-1)
+	{
+	printf("Element not found");
+    }
+	else
+	{
+	printf("Element found at the location %d",index);
+    }
+return 0;
+}
+
+/*
+OUTPUT:
+
+Enter the number of elements:6
+Enter the sorted array:1
+2
+3
+4
+5
+6
+Enter the key element:3
+Element found at the location 2
+
+*/
